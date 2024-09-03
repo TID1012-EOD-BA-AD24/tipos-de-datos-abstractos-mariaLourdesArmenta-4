@@ -103,6 +103,55 @@ jobs:
           build --select-method miTest.AppTest#testNumeroteResta
         timeout: 10
         max-score: 10
+    - name: testFechaEquals
+      id: testfechaequals
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFechaEquals
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testFechaEquals
+        timeout: 10
+    - name: testPuntoDistancia
+      id: testpuntodistancia
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testPuntoDistancia
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testPuntoDistancia
+        timeout: 10
+        max-score: 5
+    - name: testTriangulo
+      id: testtriangulo
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testTriangulo
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testTriangulo
+        timeout: 10
+        max-score: 5
+    - name: testPoligono
+      id: testpoligono
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testPoligono
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testPoligono
+        timeout: 10
+        max-score: 10
+    - name: testFecha
+      id: testfecha
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFecha
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testFecha
+        timeout: 10
+        max-score: 5
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -115,5 +164,10 @@ jobs:
         TESTMATRIZ_RESULTS: "${{steps.testmatriz.outputs.result}}"
         TESTNUMEROTESUMA_RESULTS: "${{steps.testnumerotesuma.outputs.result}}"
         TESTNUMEROTERESTA_RESULTS: "${{steps.testnumeroteresta.outputs.result}}"
+        TESTFECHAEQUALS_RESULTS: "${{steps.testfechaequals.outputs.result}}"
+        TESTPUNTODISTANCIA_RESULTS: "${{steps.testpuntodistancia.outputs.result}}"
+        TESTTRIANGULO_RESULTS: "${{steps.testtriangulo.outputs.result}}"
+        TESTPOLIGONO_RESULTS: "${{steps.testpoligono.outputs.result}}"
+        TESTFECHA_RESULTS: "${{steps.testfecha.outputs.result}}"
       with:
-        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece,testmatriz,testnumerotesuma,testnumeroteresta
+        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece,testmatriz,testnumerotesuma,testnumeroteresta,testfechaequals,testpuntodistancia,testtriangulo,testpoligono,testfecha
