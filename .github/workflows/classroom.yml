@@ -1,0 +1,86 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: testRationalAdd
+      id: testrationaladd
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testRationalAdd
+        setup-command: make compile
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testRationalAdd
+        timeout: 10
+        max-score: 5
+    - name: testRationalMult
+      id: testrationalmult
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testRationalMult
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testRationalAdd
+        timeout: 10
+        max-score: 5
+    - name: testRationalEqual
+      id: testrationalequal
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testRationalEqual
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testRationalEqual
+        timeout: 10
+        max-score: 5
+    - name: testConjuntoAñadir
+      id: testconjuntoanadir
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testConjuntoAñadir
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testConjuntoAñadir
+        timeout: 10
+        max-score: 5
+    - name: testConjuntoRetirar
+      id: testconjuntoretirar
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testConjuntoRetirar
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testConjuntoRetirar
+        timeout: 10
+        max-score: 5
+    - name: testConjuntoPertenece
+      id: testconjuntopertenece
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testConjuntoPertenece
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testConjuntoPertenece
+        timeout: 10
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TESTRATIONALADD_RESULTS: "${{steps.testrationaladd.outputs.result}}"
+        TESTRATIONALMULT_RESULTS: "${{steps.testrationalmult.outputs.result}}"
+        TESTRATIONALEQUAL_RESULTS: "${{steps.testrationalequal.outputs.result}}"
+        TESTCONJUNTOANADIR_RESULTS: "${{steps.testconjuntoanadir.outputs.result}}"
+        TESTCONJUNTORETIRAR_RESULTS: "${{steps.testconjuntoretirar.outputs.result}}"
+        TESTCONJUNTOPERTENECE_RESULTS: "${{steps.testconjuntopertenece.outputs.result}}"
+      with:
+        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece
