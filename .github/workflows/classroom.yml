@@ -73,6 +73,36 @@ jobs:
           build --select-method miTest.AppTest#testConjuntoPertenece
         timeout: 10
         max-score: 5
+    - name: testMatriz
+      id: testmatriz
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testMatriz
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testMatriz
+        timeout: 10
+        max-score: 5
+    - name: testNumeroteSuma
+      id: testnumerotesuma
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testNumeroteSuma
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testNumeroteSuma
+        timeout: 10
+        max-score: 10
+    - name: testNumeroteResta
+      id: testnumeroteresta
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testNumeroteResta
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testNumeroteResta
+        timeout: 10
+        max-score: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -82,5 +112,8 @@ jobs:
         TESTCONJUNTOANADIR_RESULTS: "${{steps.testconjuntoanadir.outputs.result}}"
         TESTCONJUNTORETIRAR_RESULTS: "${{steps.testconjuntoretirar.outputs.result}}"
         TESTCONJUNTOPERTENECE_RESULTS: "${{steps.testconjuntopertenece.outputs.result}}"
+        TESTMATRIZ_RESULTS: "${{steps.testmatriz.outputs.result}}"
+        TESTNUMEROTESUMA_RESULTS: "${{steps.testnumerotesuma.outputs.result}}"
+        TESTNUMEROTERESTA_RESULTS: "${{steps.testnumeroteresta.outputs.result}}"
       with:
-        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece
+        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece,testmatriz,testnumerotesuma,testnumeroteresta
