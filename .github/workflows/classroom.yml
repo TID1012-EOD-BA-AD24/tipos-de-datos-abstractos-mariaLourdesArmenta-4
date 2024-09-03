@@ -142,16 +142,82 @@ jobs:
           build --select-method miTest.AppTest#testPoligono
         timeout: 10
         max-score: 10
-    - name: testFecha
-      id: testfecha
+    - name: testFechaAddDias
+      id: testfechaadddias
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: testFecha
+        test-name: testFechaAddDias
         setup-command: ''
         command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
-          build --select-method miTest.AppTest#testFecha
+          build --select-method miTest.AppTest#testFechaAddDias
+        timeout: 10
+        max-score: 10
+    - name: testFechafechaToDias
+      id: testfechafechatodias
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFechafechaToDias
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testFechafechaToDias
+        timeout: 10
+    - name: testFechaDiasToFecha
+      id: testfechadiastofecha
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFechaDiasToFecha
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testFechaDiasToFecha
+        timeout: 10
+    - name: testPersona
+      id: testpersona
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testPersona
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testPersona
+        timeout: 10
+    - name: testCadenaAgregarBorrar
+      id: testcadenaagregarborrar
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testCadenaAgregarBorrar
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testCadenaAgregarBorrar
         timeout: 10
         max-score: 5
+    - name: testCadenaLlena
+      id: testcadenallena
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testCadenaLlena
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testCadenaLlena
+        timeout: 10
+        max-score: 5
+    - name: testCadenaInvertir
+      id: testcadenainvertir
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testCadenaInvertir
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testCadenaInvertir
+        timeout: 10
+        max-score: 5
+    - name: testPunto
+      id: testpunto
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testPunto
+        setup-command: ''
+        command: java -jar lib/junit-platform-console-standalone-1.5.2.jar -class-path
+          build --select-method miTest.AppTest#testPunto
+        timeout: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -168,6 +234,13 @@ jobs:
         TESTPUNTODISTANCIA_RESULTS: "${{steps.testpuntodistancia.outputs.result}}"
         TESTTRIANGULO_RESULTS: "${{steps.testtriangulo.outputs.result}}"
         TESTPOLIGONO_RESULTS: "${{steps.testpoligono.outputs.result}}"
-        TESTFECHA_RESULTS: "${{steps.testfecha.outputs.result}}"
+        TESTFECHAADDDIAS_RESULTS: "${{steps.testfechaadddias.outputs.result}}"
+        TESTFECHAFECHATODIAS_RESULTS: "${{steps.testfechafechatodias.outputs.result}}"
+        TESTFECHADIASTOFECHA_RESULTS: "${{steps.testfechadiastofecha.outputs.result}}"
+        TESTPERSONA_RESULTS: "${{steps.testpersona.outputs.result}}"
+        TESTCADENAAGREGARBORRAR_RESULTS: "${{steps.testcadenaagregarborrar.outputs.result}}"
+        TESTCADENALLENA_RESULTS: "${{steps.testcadenallena.outputs.result}}"
+        TESTCADENAINVERTIR_RESULTS: "${{steps.testcadenainvertir.outputs.result}}"
+        TESTPUNTO_RESULTS: "${{steps.testpunto.outputs.result}}"
       with:
-        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece,testmatriz,testnumerotesuma,testnumeroteresta,testfechaequals,testpuntodistancia,testtriangulo,testpoligono,testfecha
+        runners: testrationaladd,testrationalmult,testrationalequal,testconjuntoanadir,testconjuntoretirar,testconjuntopertenece,testmatriz,testnumerotesuma,testnumeroteresta,testfechaequals,testpuntodistancia,testtriangulo,testpoligono,testfechaadddias,testfechafechatodias,testfechadiastofecha,testpersona,testcadenaagregarborrar,testcadenallena,testcadenainvertir,testpunto
