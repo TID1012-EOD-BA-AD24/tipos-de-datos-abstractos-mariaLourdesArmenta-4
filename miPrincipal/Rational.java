@@ -36,6 +36,10 @@ public class Rational{
     }
     public Rational add(Rational a){
       //coloca aquí el código faltante
+      Rational x = new Rational();
+      x.setNumerador(this.getNumerador()*a.getDenominador()+this.getDenominador()*a.getNumerador());
+      x.setDenominador(this.getDenominador()*a.getDenominador());
+      return x;
     }
 
     public Rational mult(Rational a, Rational b){
@@ -46,6 +50,10 @@ public class Rational{
     }
     public Rational mult(Rational a){
        //coloca aquí el código faltante
+       Rational x = new Rational();
+       x.setNumerador(this.getNumerador()*a.getNumerador());
+       x.setDenominador(this.getDenominador()*a.getDenominador());
+       return x;
     }
     public boolean equal(Rational a,Rational b){
 
@@ -53,10 +61,13 @@ public class Rational{
     }
     public boolean equal(Rational a){
         //coloca aquí el código faltante
+        return (this.getDenominador()*a.getNumerador() == 
+        a.getDenominador()*this.getNumerador());
     }
     @Override
     public String toString() {
         //coloca aquí el código faltante
+        return r[0] + "/" +r[1];
 
     }
     
