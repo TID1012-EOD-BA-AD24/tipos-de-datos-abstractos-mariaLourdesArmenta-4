@@ -5,6 +5,8 @@ public class Rational{
 
     public Rational(){
        //coloca aquí el código faltante
+       r[0]=0;
+       r[1]=1;
     }
 
     public Rational(int a,int b) throws PosicionIlegalException{
@@ -13,6 +15,8 @@ public class Rational{
             throw new PosicionIlegalException();
         }
        //coloca aquí el código faltante
+         r[0]=a;
+         r[1]=b;
     }
     
     public int getNumerador(){
